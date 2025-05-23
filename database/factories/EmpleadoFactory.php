@@ -13,8 +13,8 @@ class EmpleadoFactory extends Factory
     public function definition()
     {
         return [
-			'nombre' => $this->faker->name,
-			'correo' => $this->faker->name,
+            'nombre' => $this->faker->name,
+            'correo' => $this->faker->unique()->safeEmail,
         ];
     }
 }

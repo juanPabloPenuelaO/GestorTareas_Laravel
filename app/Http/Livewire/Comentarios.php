@@ -25,10 +25,10 @@ class Comentarios extends Component
 
     public function render()
     {
-        $keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '%' . $this->keyWord . '%';
         return view('livewire.comentarios.view', [
             'comentarios' => Comentario::latest()
-                ->orWhere('Comentario', 'LIKE', $keyWord)
+                ->orWhere('comentario', 'LIKE', $keyWord)
                 ->orWhere('nombreCliente', 'LIKE', $keyWord)
                 ->orWhere('fecha_comentario', 'LIKE', $keyWord)
                 ->orWhere('proyecto_id', 'LIKE', $keyWord)
@@ -56,7 +56,7 @@ class Comentarios extends Component
         ]);
 
         Comentario::create([
-            'Comentario' => $this->Comentario,
+            'Comentario' => $this->comentario,
             'nombreCliente' => $this->nombreCliente,
             'fecha_comentario' => $this->fecha_comentario,
             'proyecto_id' => $this->proyecto_id,
@@ -68,7 +68,7 @@ class Comentarios extends Component
 
     private function resetAll()
     {
-        $this->Comentario = '';
+        $this->comentario = '';
         $this->nombreCliente = '';
         $this->fecha_comentario = '';
         $this->proyecto_id = '';
@@ -82,7 +82,7 @@ class Comentarios extends Component
         $comentario = Comentario::findOrFail($id);
 
         $this->selected_id = $id;
-        $this->Comentario = $comentario->Comentario;
+        $this->comentario = $comentario->Comentario;
         $this->nombreCliente = $comentario->nombreCliente;
         $this->fecha_comentario = $comentario->fecha_comentario;
         $this->proyecto_id = $comentario->proyecto_id;
